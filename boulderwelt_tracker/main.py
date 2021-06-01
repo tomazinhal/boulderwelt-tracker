@@ -1,3 +1,4 @@
+import time
 import json
 import logging
 import requests
@@ -32,8 +33,9 @@ def save_data(welt, data):
     """
     data["welt"] = welt
     data["timestamp"] = datetime.now().isoformat()
-    with open(f"{welt}.json", "w+") as f:
-        LOGGER.debug(f"Dumping {data} to file")
+    with open(f"files/{welt}.json", "a") as f:
+        LOGGER.info(f"Dumping {welt} to file")
+        LOGGER.debug(f"data: {data}")
         json.dump(data, f)
 
 
